@@ -6,9 +6,12 @@ public class Ejercicio12 {
         int num;
         int numa;
         int numd;
+        int num2;
+        int num3;
         System.out.print("Por favor, introduzca un número entero positivo (de 5 cifras como máximo): ");
         num = scanner.nextInt();
         numa = num % 10;
+    
 
         if (num < 0 || num > 99999) {
             System.out.println("El número debe ser positivo");
@@ -35,7 +38,11 @@ public class Ejercicio12 {
             }
         } else if (num < 10000) {
             numd = num / 1000;
-            if (numd == numa) {
+            num2 = num / 100;
+            num2= num2 % 10;
+            num3 = num /100;
+            num3= num3 % 10;
+            if (numd == numa && num2 == num3) {
                 System.out.println("El número es capicúa");
             } else {
                 System.out.println("El número no es capicúa");
