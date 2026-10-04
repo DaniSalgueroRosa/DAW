@@ -8,7 +8,10 @@ public class Ejercicio7 {
         System.out.print("A continuación deberá introducir una hora del día, primero introducirá la hora y luego los minutos:");
         hora = scanner.nextInt();
         minutos= scanner.nextInt();
-       if (minutos == 0){
+       if (hora>24){
+        System.out.println("La hora no puede ser mayor de las 24");
+       }
+       else if (minutos == 0){
          int calculo= (24-hora)*3600;
         System.out.println("El tiempo restante hasta la medianoche es "+ calculo + " segundos");
        } 
