@@ -1,0 +1,17 @@
+  /*reset*/
+    *{
+      box-sizing: border-box;
+  }
+      .logo{
+        width: 150px;
+        height: 150px;
+        background: palevioletred;
+        padding: 1rem ; /*1rem = 16px*/
+        margin: 20px ;
+        border: 5px solid black;
+        
+        img{
+            
+            width: 100%;
+        }
+      }
