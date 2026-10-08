@@ -4,5 +4,6 @@ public class dowhile /*Hasta, ejecuta el bloque de código y luego hace la pregu
         do{
             mes++;
         }while (mes<=3);
+        
     }
 }
