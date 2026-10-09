@@ -5,7 +5,9 @@ public class Ejercicio6 {
         Scanner scanner = new Scanner(System.in);
         double num = 0;
         System.out.print("Introduzca los números que desee para hacer la media aritmetica para terminar debe introducir un número negativo: ");
-        num = scanner.nextDouble();
         
+        while(num<0){
+            num = scanner.nextDouble();
+        }
     }
 }
