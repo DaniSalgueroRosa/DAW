@@ -1,4 +1,4 @@
-public class App {
+public class HolaMundo2 {
     public static void main(String[] args) throws Exception {
         System.out.println("\033[0m Hola Mundo"); //esto es para colores \033[Nºcolorm
         System.out.print("\033[0mSalto de línea \n");
