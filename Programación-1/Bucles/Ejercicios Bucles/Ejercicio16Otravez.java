@@ -18,7 +18,7 @@ public class Ejercicio16Otravez {
                 }
             }
         }
-        if(esPrimo){
+         if(esPrimo){
             System.out.println("El número es primo");
         }
     
