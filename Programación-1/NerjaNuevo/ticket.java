@@ -1,5 +1,6 @@
 
-public class ticket {
+
+public class Ticket {
 
     private int entradaAdulto;
     private int entradaNinio;
@@ -12,7 +13,7 @@ public class ticket {
 
    
 
-    public ticket(int entradaAdulto, int entradaNinio, int audioguia) {
+    public Ticket(int entradaAdulto, int entradaNinio, int audioguia) {
         this.entradaAdulto = entradaAdulto;
         this.entradaNinio = entradaNinio;
         this.audioguia = audioguia;
@@ -55,10 +56,11 @@ public class ticket {
         System.out.printf("%-20s %-11s %.2f\n", "Audioguías:", audioguia, importeAudioguia);
         System.out.println("----------------------------------------");
         System.out.println(" ");
-        System.out.printf("%-20s %.2f\n", "Subtotal", calcularSubtotal() );
-        System.out.printf("%-20s %.2f\n", "Descuento guías", calcularDescuentoAudioguias() );
+        System.out.printf("%-31s %.2f\n", "Subtotal", calcularSubtotal() );
+        System.out.printf("%-31s %.2f\n", "Descuento guías", calcularDescuentoAudioguias() );
         System.out.println("========================================");
         System.out.printf("\033[47m\033[31m\033[1m%S                  %.2f e\n\033[0m", "TOTAL A PAGAR:",  calcularTotal());
+        System.out.print("\033[0m");
     }
 
     public int getEntradaAdulto() {

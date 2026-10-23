@@ -1,5 +1,4 @@
-
-public class caja {
+public class Caja {
 
     private static int totalEntradasAdulto;
     private static int totalEntradasNinio;
@@ -7,7 +6,7 @@ public class caja {
     private static double ingresosTotales;
     private static double descuentosAplicados;
 
-    public void registrarTicket(ticket ticket) {
+    public static void registrarTicket(Ticket ticket) {
         totalEntradasAdulto += ticket.getEntradaAdulto();
         totalEntradasNinio += ticket.getEntradaNinio();
         totalAudioguia += ticket.getAudioguia();
@@ -15,7 +14,7 @@ public class caja {
         descuentosAplicados += ticket.calcularDescuentoAudioguias();
     }
 
-    public void mostrarResumenDia() {
+    public static void mostrarResumenDia() {
         System.out.println("========================================");
         System.out.printf("   %24s\n", "Cueva de Nerja - Resumen del día");
         System.out.println("========================================");
