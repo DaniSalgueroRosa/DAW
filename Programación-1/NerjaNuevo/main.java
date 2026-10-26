@@ -1,56 +1,70 @@
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class main {
-
+public class Main {
     public static void main(String[] args) {
-
-
-        /*  private static int leerNaturalSeguro(){
-        Scanner scanner = new Scanner (System.in);
-        int natural = 0
-        } */
-
-        Scanner scanner = new Scanner(System.in);
-        int opcion;
-        int entradaAdulto;
-        int entradaNinio;
-        int audioguia;
-        do {
-            Caja caja1 = new Caja();
-            System.out.println("Seleccione una opción:");
-            System.out.println("1. Registrar ticket");
-            System.out.println("2. Resumen ventas");
-            System.out.println("3. Salir de la aplicación");
-            opcion = scanner.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    System.out.print("Número de entradas de adulto: ");
-                    entradaAdulto = scanner.nextInt();
-                    System.out.print("Número de entradas de niño: ");
-                    entradaNinio = scanner.nextInt();
-                    System.out.print("Número de audioguías: ");
-                    audioguia = scanner.nextInt();
-                    Ticket ticket = new Ticket(entradaAdulto, entradaNinio, audioguia);
-                    ticket.imprimirTicket();
-                    Caja.registrarTicket(ticket);
-                    break;
-                case 2:
-                    Caja.mostrarResumenDia();
-                    
-                    break;
-                case 3:
-                     System.out.println("Hasta luego");
-                     break;
-
-                default: 
-                    System.out.println("Ha introducido " + opcion + ". Debe introducir 1,2 o 3.");
-                    break;
+        menu();
+        
+    }
+    private static int leerNaturalSeguro(){
+        Scanner Scanner = new Scanner(System.in);
+        int natural = 0;
+        boolean esNatural= false;
+        do { 
+            try {
+                natural = Scanner.nextInt();
+                if (natural <=0){
+                    System.out.println("Introduzca un numero mayor que 1");
+                }
+                else {
+                    esNatural=true;
+                }   
+            } 
+            catch (InputMismatchException ex) {
+                System.out.println("No es un numero.Introduzcalo de nuevo");
+                Scanner.next();
             }
-
-        } while (opcion != 3);
-
+            catch(Exception ex){
+            }
+        }while (!esNatural);
+       return natural;
     }
 
+    private static void menu(){
+        int opcion;
+        do { 
+            System.out.println("Cueva de Nerja");
+            System.out.println("¿Que desea hacer?");
+            System.out.println("1.Jugar GTAVI");
+            System.out.println("2.Ver Doomsday");
+            System.out.println("3.Irme a mi casa");
+            opcion = leerNaturalSeguro();
+
+            switch (opcion){
+                case 1: {
+                    //TODO Corregir esto
+                    System.out.println("Entradas adulto:");
+                    int entradasAdulto = leerNaturalSeguro();
+                    System.out.println("Entradas niño:");
+                    int entradasNino = leerNaturalSeguro();
+                    System.out.println("Audioguias:");
+                    int audioguia = leerNaturalSeguro();
+                    Ticket ticket = new Ticket(entradasAdulto, entradasNino, audioguia);
+                    Caja.registrarTicket(ticket);
+                }
+                case 2: {
+                    Caja.mostrarResumenDia();
+                }
+                case 3: {
+                    System.out.println("Hasta luego!");
+                    break;
+                }
+                default:{
+                    System.out.printf("Ha introducido %d. Solo son validas las opciones 1,2 y 3.",opcion);
+                    break;
+                }
+            }
+            
+        } while (opcion!=3);
+    }
 }

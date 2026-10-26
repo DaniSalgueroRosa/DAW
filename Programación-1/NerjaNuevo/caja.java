@@ -1,35 +1,33 @@
 public class Caja {
-
+    
     private static int totalEntradasAdulto;
-    private static int totalEntradasNinio;
-    private static int totalAudioguia;
-    private static double ingresosTotales;
-    private static double descuentosAplicados;
+    private static int totalEntradasNino;
+    private static int totalAudioGuias;
+    private static double totalIngresos;
+    private static double totalDescuentos;
 
-    public static void registrarTicket(Ticket ticket) {
-        totalEntradasAdulto += ticket.getEntradaAdulto();
-        totalEntradasNinio += ticket.getEntradaNinio();
-        totalAudioguia += ticket.getAudioguia();
-        ingresosTotales += ticket.calcularTotal();
-        descuentosAplicados += ticket.calcularDescuentoAudioguias();
+    public  static void registrarTicket(Ticket ticket){
+        totalEntradasAdulto += ticket.getEntradasAdulto();
+        totalEntradasNino = totalEntradasNino + ticket.getEntradasNino();
+        totalAudioGuias= totalAudioGuias + ticket.getEntradasAudioguia();
+
+        totalIngresos += ticket.calcularTotal();
+        totalDescuentos+= ticket.calcularDescuentoAudioguias();
     }
+    public static void mostrarResumenDia(){
+        System.out.println("\033[32m====================================\033[0m");
+        System.out.printf("\033[32m%-2.5s %s"," ","Cueva de Nerja-Resumen del día\033[0m\n");
+        System.out.println("\033[32m====================================\033[0m");
 
-    public static void mostrarResumenDia() {
-        System.out.println("========================================");
-        System.out.printf("   %24s\n", "Cueva de Nerja - Resumen del día");
-        System.out.println("========================================");
-
-        System.out.printf("%-20s %-11s %s\n", "Producto", "Cant", "Importe");
-        System.out.println("----------------------------------------");
-
-        System.out.printf("%-20s %-11.2f\n", "Adultos:", totalEntradasAdulto);
-        System.out.printf("%-20s %-11.2f\n", "Niños:", totalEntradasNinio);
-        System.out.printf("%-20s %-11.2f\n", "Audioguías:", totalAudioguia);
-        System.out.println("----------------------------------------");
-        System.out.println(" ");
-        System.out.printf("%-20s %-11.2f\n", "Descuento guías", descuentosAplicados );
-        System.out.println("========================================");
-        System.out.printf("\033[47m\033[31m\033[1m%S                  %.2f e\n\033[0m", "TOTAL GANADO:",  ingresosTotales);
+         System.out.printf("%-20s %-6s %-3s","Producto","Cant.","Importe\n");
+         System.out.println("------------------------------------"); 
+        
+         System.out.printf("%-23s %-5s %.2fE ","Adultos",totalEntradasAdulto, totalEntradasAdulto* Ticket.getPrecioAdulto());
+         System.out.printf("\n%-23s %-5s %.2fE  ","Niños",totalEntradasNino, totalEntradasNino*Ticket.getPrecioNino());
+         System.out.printf("\n%-23s %-5s %.2fE ","Guías",totalAudioGuias,totalAudioGuias*Ticket.getPrecioGuia());
+         System.out.println("\n------------------------------------");
+         System.out.printf("%-23s %-5s %.2fE\n","Total Ingresos:"," ",totalIngresos);
+         System.out.printf("%-23s %-5s %.2fE\n","Total Descuento guías:"," ",totalDescuentos);
+         System.out.println("\n====================================");
     }
-
 }

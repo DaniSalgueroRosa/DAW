@@ -1,94 +1,65 @@
-
-
 public class Ticket {
+    private static final double precioAdulto = 9.60;
+    private static final double precioNino = 4.95;
+    private static final double precioGuia = 3.50;
+    private static final double descuentoGuia = 0.17;
+    
+    private int entradasAdulto;
+    private int entradasNino;
+    private int entradaAudioguia;
 
-    private int entradaAdulto;
-    private int entradaNinio;
-    private int audioguia;
 
-    static final double precioAdulto = 9.60;
-    static final double precioNinio = 4.95;
-    static final double precioAudioguia = 3.50;
-    static final double descuentoAudioguia = 0.17;
-
-   
-
-    public Ticket(int entradaAdulto, int entradaNinio, int audioguia) {
-        this.entradaAdulto = entradaAdulto;
-        this.entradaNinio = entradaNinio;
-        this.audioguia = audioguia;
+    public Ticket (int entradasAdulto, int entradasNino, int audioguia){
+        this.entradasAdulto = entradasAdulto;
+        this.entradasNino = entradasNino;
+        this.entradaAudioguia = audioguia;
     }
 
-    public double calcularSubtotal() {
-        double subtotalAdulto = entradaAdulto * precioAdulto;
-        double subtotalNinio = entradaNinio * precioNinio;
-        double subtotalAudioguia = audioguia * precioAudioguia;
-        double subtotal = subtotalAdulto + subtotalNinio + subtotalAudioguia;
+    public double calcularSubtotal (){
+
+        double subtotalAdulto = precioAdulto * entradasAdulto;
+        double subtotalNino = precioNino * entradasNino;
+        double subtotalGuia = precioGuia * entradaAudioguia;
+        double subtotal = subtotalAdulto + subtotalNino 
+        -++ subtotalGuia;
         return subtotal;
     }
 
-    public double calcularDescuentoAudioguias() {
-        double ahorro = (audioguia * precioAudioguia) * descuentoAudioguia;
-        return ahorro;
-
+    public double calcularDescuentoAudioguias(){
+        
+        double ahorro =(precioGuia*entradaAudioguia)*descuentoGuia;
+        return ahorro;        
     }
 
-    public double calcularTotal() {
-        double total = calcularSubtotal() - calcularDescuentoAudioguias();
+    public double calcularTotal(){
+        double total = calcularSubtotal()-calcularDescuentoAudioguias();
         return total;
-    }  
-    ;
 
-    public void imprimirTicket() {
-        System.out.println("========================================");
-        System.out.printf("   %24s\n", "Cueva de Nerja");
-        System.out.println("========================================");
-
-        System.out.printf("%-20s %-11s %s\n","Producto", "Cant", "Importe");
-        System.out.println("----------------------------------------");
-
-        double importeAdulto = entradaAdulto * precioAdulto;
-        double importeNinio = entradaNinio * precioNinio;
-        double importeAudioguia = audioguia * precioAudioguia; 
-
-        System.out.printf("%-20s %-11s %.2f\n", "Adultos:", entradaAdulto, importeAdulto);
-        System.out.printf("%-20s %-11s %.2f\n", "Niños:", entradaNinio, importeAdulto);
-        System.out.printf("%-20s %-11s %.2f\n", "Audioguías:", audioguia, importeAudioguia);
-        System.out.println("----------------------------------------");
-        System.out.println(" ");
-        System.out.printf("%-31s %.2f\n", "Subtotal", calcularSubtotal() );
-        System.out.printf("%-31s %.2f\n", "Descuento guías", calcularDescuentoAudioguias() );
-        System.out.println("========================================");
-        System.out.printf("\033[47m\033[31m\033[1m%S                  %.2f e\n\033[0m", "TOTAL A PAGAR:",  calcularTotal());
-        System.out.print("\033[0m");
     }
-
-    public int getEntradaAdulto() {
-        return entradaAdulto;
+    public void imprimirTicket(){
+    System.out.printf("Precio adultos %10d €\n",this.entradasAdulto /*subtotalAdulto*/);   
     }
-
-    public int getEntradaNinio() {
-        return entradaNinio;
-    }
-
-    public int getAudioguia(){
-        return audioguia;
-    }
+    //GETTERS
+    public static double getDescuentoGuia(){
+        return descuentoGuia;
+    } 
 
     public static double getPrecioAdulto(){
         return precioAdulto;
     }
-
-    public static double getPrecioNinio() {
-        return precioNinio;
+    public static double getPrecioNino(){
+        return precioNino;
     }
-
-    public static double getPrecioAudioguia(){
-        return precioAudioguia;
+    public static double getPrecioGuia(){
+        return precioGuia;
     }
-    public static double getDescuentoAudioguia(){
-        return descuentoAudioguia;
+    public int getEntradasAdulto(){
+        return entradasAdulto;
     }
-    
-   
+    public int getEntradasNino(){
+        return entradasNino;
+    }
+    public int getEntradasAudioguia(){
+        return entradaAudioguia;
+    }   
 }
