@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elige tu Ordenador - Oficina vs Desarrollo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes floatGlow {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.25; }
+            50% { transform: translateY(-15px) scale(1.08); opacity: 0.45; }
+        }
+        .animate-float { animation: floatGlow 8s infinite ease-in-out; }
+        .progress-bar { transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+    </style>
+</head>
+<body class="bg-[#070b14] text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- Fondo con luces ambientales dinámicas y refinadas -->
+    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none animate-float"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none animate-float" style="animation-delay: 4s;"></div>
+
+    <!-- Header Común -->
+    <header class="bg-[#0b101d]/80 backdrop-blur-xl border-b border-slate-800/80 py-4 px-6 sticky top-0 z-50 shadow-2xl">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3.5 cursor-pointer group" onclick="showView('home')">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-microchip text-lg"></i>
+                </div>
+                <div>
+                    <span class="block font-black text-base tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                        Elige tu Ordenador
+                    </span>
+                    <span class="block text-[11px] text-slate-400 font-medium">Asistencia de Hardware Profesional</span>
+                </div>
+            </div>
+            <div id="nav-actions" class="hidden">
+                <button onclick="showView('home')" class="text-xs md:text-sm bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 text-slate-200 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium flex items-center gap-2 cursor-pointer shadow-sm hover:shadow">
+                    <i class="fa-solid fa-arrow-left text-blue-400"></i> Cambiar Perfil / Presupuesto
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 py-12 my-auto w-full flex-1 flex items-center justify-center z-10">
+
+        <!-- ================= VISTA 1: PORTADA ================= -->
+        <section id="view-home" class="w-full text-center space-y-12">
+            <div class="max-w-3xl mx-auto space-y-5">
+                <span class="inline-flex items-center gap-2 bg-blue-500/10 text-blue-400 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider border border-blue-500/20 shadow-inner">
+                    <i class="fa-solid fa-bolt text-blue-400"></i> Selector Inteligente de Hardware
+                </span>
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-[1.15]">
+                    ¿Qué tipo de ordenador <span class="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">necesitas?</span>
+                </h1>
+                <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+                    Selecciona tu perfil profesional y ajusta tu presupuesto para descubrir componentes ideales, estadísticas de rendimiento y análisis de consumo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Tarjeta Oficina -->
+                <div class="bg-[#0b101d]/90 backdrop-blur-2xl border border-slate-800/80 rounded-3xl p-8 text-left shadow-2xl flex flex-col justify-between relative overflow-hidden group hover:border-blue-500/40 transition-all duration-300 hover:shadow-blue-500/5">
+                    <div class="absolute top-0 right-0 w-36 h-36 bg-blue-500/5 rounded-bl-full pointer-events-none group-hover:bg-blue-500/10 transition duration-500"></div>
+                    <div>
+                        <div class="w-14 h-14 bg-blue-600/15 text-blue-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-blue-500/20">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-blue-400 uppercase tracking-widest">Entorno Profesional</span>
+                        <h2 class="text-2xl font-bold mt-1 mb-2 text-white">Ordenador de Oficina</h2>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed font-normal">
+                            Eficiente, silencioso y fluido para multitarea de ofimática, navegación web pesada y videollamadas.
+                        </p>
+
+                        <!-- Selector de presupuesto Oficina -->
+                        <div class="space-y-3 mb-8">
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Selecciona Presupuesto:</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="setBudget('office', 500)" id="btn-office-500" class="budget-btn-office py-3 px-4 rounded-xl text-sm font-bold border border-blue-500 bg-blue-600 text-white shadow-lg shadow-blue-600/25 cursor-pointer transition-all duration-200">
+                                    500 € <span class="block text-[10px] font-normal opacity-85">Básico & Ágil</span>
+                                </button>
+                                <button onclick="setBudget('office', 1000)" id="btn-office-1000" class="budget-btn-office py-3 px-4 rounded-xl text-sm font-bold border border-slate-800 bg-slate-900/80 text-slate-300 hover:bg-slate-800 cursor-pointer transition-all duration-200">
+                                    1.000 € <span class="block text-[10px] font-normal opacity-75">Avanzado / Premium</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="launchConfig('office')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 px-6 rounded-xl transition duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-blue-600/25">
+                        <span>Ver Configuración y Análisis</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <!-- Tarjeta Desarrollo -->
+                <div class="bg-[#0b101d]/90 backdrop-blur-2xl border border-slate-800/80 rounded-3xl p-8 text-left shadow-2xl flex flex-col justify-between relative overflow-hidden group hover:border-indigo-500/40 transition-all duration-300 hover:shadow-indigo-500/5">
+                    <div class="absolute top-0 right-0 w-36 h-36 bg-indigo-500/5 rounded-bl-full pointer-events-none group-hover:bg-indigo-500/10 transition duration-500"></div>
+                    <div>
+                        <div class="w-14 h-14 bg-indigo-600/15 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner border border-indigo-500/20">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <span class="text-[11px] font-bold text-indigo-400 uppercase tracking-widest">Estación de Trabajo</span>
+                        <h2 class="text-2xl font-bold mt-1 mb-2 text-white">Ordenador de Desarrollo</h2>
+                        <p class="text-slate-400 text-sm mb-6 leading-relaxed font-normal">
+                            Potencia extrema para compilación rápida, contenedores Docker, máquinas virtuales y múltiples IDEs.
+                        </p>
+
+                        <!-- Selector de presupuesto Desarrollo -->
+                        <div class="space-y-3 mb-8">
+                            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider">Selecciona Presupuesto:</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setBudget('dev', 1000)" id="btn-dev-1000" class="budget-btn-dev py-3 px-2 rounded-xl text-xs font-bold border border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-600/25 cursor-pointer transition-all duration-200 text-center">
+                                    1.000 € <span class="block text-[9px] font-normal opacity-85">Estándar</span>
+                                </button>
+                                <button onclick="setBudget('dev', 2000)" id="btn-dev-2000" class="budget-btn-dev py-3 px-2 rounded-xl text-xs font-bold border border-slate-800 bg-slate-900/80 text-slate-300 hover:bg-slate-800 cursor-pointer transition-all duration-200 text-center">
+                                    2.000 € <span class="block text-[9px] font-normal opacity-75">Pro Multitarea</span>
+                                </button>
+                                <button onclick="setBudget('dev', 3000)" id="btn-dev-3000" class="budget-btn-dev py-3 px-2 rounded-xl text-xs font-bold border border-slate-800 bg-slate-900/80 text-slate-300 hover:bg-slate-800 cursor-pointer transition-all duration-200 text-center">
+                                    Máximo <span class="block text-[9px] font-normal opacity-75">Sin Límites</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="launchConfig('dev')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3.5 px-6 rounded-xl transition duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-indigo-600/25">
+                        <span>Ver Configuración y Análisis</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= VISTA 2: DETALLE Y ESTADÍSTICAS ================= -->
+        <section id="view-detail" class="w-full max-w-5xl hidden space-y-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#0b101d]/90 backdrop-blur-xl border border-slate-800/80 p-6 rounded-3xl shadow-xl">
+                <div>
+                    <span id="detail-tag" class="text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Perfil Oficina</span>
+                    <h2 id="detail-title" class="text-2xl md:text-3xl font-black text-white mt-2.5">PC de Oficina (500€)</h2>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span id="detail-price-tag" class="text-xl font-extrabold text-emerald-400 bg-emerald-950/40 border border-emerald-500/30 px-5 py-2.5 rounded-2xl shadow-inner">500 €</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Columna Izquierda: Especificaciones técnicas -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-[#0b101d]/90 backdrop-blur-xl border border-slate-800/80 p-6 rounded-3xl shadow-xl space-y-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-list-check text-blue-400"></i> Componentes Seleccionados
+                                </h3>
+                                <span id="life-badge" class="text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-xl">
+                                    <i class="fa-solid fa-shield-halved mr-1"></i> +4 años de vida útil
+                                </span>
+                            </div>
+                            <ul id="specs-list" class="space-y-3.5 text-sm">
+                                <!-- Inyectado por JS -->
+                            </ul>
+                        </div>
+
+                        <!-- Botón para ver justificación adaptada -->
+                        <div class="pt-6 border-t border-slate-800/80 mt-4">
+                            <button onclick="openJustificationModal()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-blue-600/25">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span>Ver justificación técnica detallada</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Gráfica de Rendimiento y Consumo -->
+                <div class="lg:col-span-6 flex flex-col space-y-6">
+                    
+                    <!-- Tarjeta 1: Gráfica de Rendimiento Estimado (Barras Tipo Videojuego) -->
+                    <div class="bg-[#0b101d]/90 backdrop-blur-xl border border-slate-800/80 p-6 rounded-3xl shadow-xl space-y-5">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i class="fa-solid fa-chart-bar text-indigo-400"></i> Rendimiento Estimado
+                            </h3>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-widest bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">Escala 0-100</span>
+                        </div>
+
+                        <div id="performance-bars" class="space-y-3.5 text-xs">
+                            <!-- Inyectado por JS -->
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 2: Calculadora de Consumo Energético (Watios) -->
+                    <div class="bg-[#0b101d]/90 backdrop-blur-xl border border-slate-800/80 p-6 rounded-3xl shadow-xl space-y-4">
+                        <h3 class="text-base font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bolt-lightning text-amber-400"></i> Consumo y Alimentación
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4 pt-1">
+                            <div class="bg-[#070b14]/70 p-4 rounded-2xl border border-slate-800/80 text-center">
+                                <span class="block text-[11px] text-slate-400 uppercase font-semibold">Consumo en Carga</span>
+                                <strong id="calc-watts" class="text-xl font-black text-amber-400 mt-1 block">~130 W</strong>
+                            </div>
+                            <div class="bg-[#070b14]/70 p-4 rounded-2xl border border-slate-800/80 text-center">
+                                <span class="block text-[11px] text-slate-400 uppercase font-semibold">Fuente Recomendada</span>
+                                <strong id="calc-psu" class="text-xl font-black text-emerald-400 mt-1 block">450W Bronze</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta 3: Comparador de Presupuestos en Vivo -->
+                    <div class="bg-[#0b101d]/90 backdrop-blur-xl border border-slate-800/80 p-6 rounded-3xl shadow-xl space-y-3">
+                        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-scale-balanced text-blue-400"></i> ¿Qué ganas si subes de presupuesto?
+                        </h3>
+                        <div id="upgrade-comparison-content" class="text-xs text-slate-300 leading-relaxed bg-[#070b14]/70 p-3.5 rounded-2xl border border-slate-800/80">
+                            <!-- Inyectado por JS -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal de Justificación Adaptada -->
+    <div id="justification-modal" class="fixed inset-0 bg-[#070b14]/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-[#0b101d] border border-slate-800 rounded-3xl max-w-2xl w-full p-8 shadow-2xl space-y-6 relative animate-fade-in">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-question text-blue-400"></i> Justificación Técnica Adaptada
+                </h3>
+                <button onclick="closeJustificationModal()" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition cursor-pointer">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+            
+            <div id="modal-content" class="text-slate-300 text-sm leading-relaxed space-y-4">
+                <!-- Inyectado por JS -->
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeJustificationModal()" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-6 py-2.5 rounded-xl transition text-sm cursor-pointer shadow-md">
+                    Entendido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Común con tu firma -->
+    <footer class="bg-[#0b101d]/60 border-t border-slate-800/80 py-6 text-center text-slate-400 text-xs z-10">
+        <p class="font-medium">Hecho por Daniel Salguero Rosa &copy; 2026 - Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Lógica de la aplicación -->
+    <script>
+        let currentProfile = 'office';
+        let currentBudget = 500;
+
+        const configurations = {
+            office: {
+                500: {
+                    title: "PC de Oficina (500€)",
+                    tag: "Perfil Oficina - Básico & Ágil",
+                    price: "500 €",
+                    watts: "~130 W",
+                    psu: "450W Bronze",
+                    life: "+4 años de vida útil",
+                    perf: [
+                        { label: "Ofimática y Multitarea", val: 82, color: "bg-blue-500" },
+                        { label: "Velocidad de Arranque", val: 90, color: "bg-emerald-500" },
+                        { label: "Silencio y Eficiencia", val: 95, color: "bg-indigo-500" },
+                        { label: "Procesado Gráfico", val: 40, color: "bg-amber-500" }
+                    ],
+                    specs: [
+                        { icon: "fa-microchip", label: "Procesador (CPU)", val: "Intel Core i3-13100 (4 núcleos / 8 hilos)" },
+                        { icon: "fa-memory", label: "Memoria RAM", val: "16 GB DDR4 3200MHz (Multitarea fluida)" },
+                        { icon: "fa-hard-drive", label: "Almacenamiento", val: "500 GB SSD NVMe M.2 (Arranque instantáneo)" },
+                        { icon: "fa-display", label: "Gráficos (GPU)", val: "Intel UHD Graphics 730 integrados" },
+                        { icon: "fa-power-off", label: "Fuente de Alimentación", val: "450W Certificación 80+ Bronze silenciosa" }
+                    ],
+                    justification: `
+                        <p><strong>Presupuesto seleccionado: 500 € (Enfoque: Coste-Eficacia y Productividad Diaria)</strong></p>
+                        <p>Para un entorno de oficina enfocado en ofimática, navegación web con múltiples pestañas y videollamadas fluidas, no se requiere una inversión desmedida en potencia gráfica dedicada.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                            <li><strong>CPU (Intel Core i3):</strong> Rendimiento monohilo excelente para que Excel, Word o el navegador abran instantáneamente.</li>
+                            <li><strong>RAM (16 GB):</strong> Estándar imprescindible para evitar bloqueos con software corporativo abierto.</li>
+                            <li><strong>Almacenamiento (500 GB SSD NVMe):</strong> Arranque ultrarrápido del sistema operativo y carga inmediata de ficheros.</li>
+                        </ul>
+                    `,
+                    comparison: `
+                        <p class="font-semibold text-white mb-1"><i class="fa-solid fa-arrow-up text-emerald-400 mr-1"></i> Si saltas al modelo de 1.000 €:</p>
+                        <p>Duplicarás los núcleos del procesador (i5), tendrás <strong>32 GB de RAM DDR5</strong> de alta velocidad y 1 TB de almacenamiento. Vida útil estimada superior a 6 años sin ralentizaciones.</p>
+                    `
+                },
+                1000: {
+                    title: "PC de Oficina (1.000€)",
+                    tag: "Perfil Oficina - Avanzado / Premium",
+                    price: "1.000 €",
+                    watts: "~180 W",
+                    psu: "550W Modular Gold",
+                    life: "+6 años de vida útil",
+                    perf: [
+                        { label: "Ofimática y Multitarea", val: 96, color: "bg-blue-500" },
+                        { label: "Velocidad de Arranque", val: 98, color: "bg-emerald-500" },
+                        { label: "Silencio y Eficiencia", val: 92, color: "bg-indigo-500" },
+                        { label: "Procesado Gráfico", val: 55, color: "bg-amber-500" }
+                    ],
+                    specs: [
+                        { icon: "fa-microchip", label: "Procesador (CPU)", val: "Intel Core i5-14400 (10 núcleos)" },
+                        { icon: "fa-memory", label: "Memoria RAM", val: "32 GB DDR5 5600MHz de alta velocidad" },
+                        { icon: "fa-hard-drive", label: "Almacenamiento", val: "1 TB SSD NVMe PCIe 4.0 Pro" },
+                        { icon: "fa-display", label: "Gráficos (GPU)", val: "Intel UHD Graphics 770 / Gráfica dedicada baja" },
+                        { icon: "fa-power-off", label: "Fuente de Alimentación", val: "550W Modular 80+ Gold" }
+                    ],
+                    justification: `
+                        <p><strong>Presupuesto seleccionado: 1.000 € (Enfoque: Durabilidad a Largo Plazo y Multitarea Pesada)</strong></p>
+                        <p>Pensado para profesionales que manejan bases de datos masivas en Excel y software contable avanzado.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                            <li><strong>CPU (Intel Core i5 de 10 núcleos):</strong> Gran capacidad de multiproceso para macros y aplicaciones simultáneas.</li>
+                            <li><strong>RAM (32 GB DDR5):</strong> Memoria punta para asegurar cero cuellos de botella en la próxima década.</li>
+                        </ul>
+                    `,
+                    comparison: `
+                        <p class="font-semibold text-white mb-1"><i class="fa-solid fa-circle-check text-blue-400 mr-1"></i> Máxima gama de oficina:</p>
+                        <p>Cubre el 100% de las necesidades administrativas y corporativas con componentes prémium de máxima durabilidad.</p>
+                    `
+                }
+            },
+            dev: {
+                1000: {
+                    title: "PC de Desarrollo (1.000€)",
+                    tag: "Perfil Desarrollo - Estándar",
+                    price: "1.000 €",
+                    watts: "~250 W",
+                    psu: "650W Bronze",
+                    life: "+5 años de vida útil",
+                    perf: [
+                        { label: "Compilación y Código", val: 85, color: "bg-indigo-500" },
+                        { label: "Multitarea / Contenedores", val: 80, color: "bg-blue-500" },
+                        { label: "Velocidad de Lectura SSD", val: 92, color: "bg-emerald-500" },
+                        { label: "Entornos Gráficos / IA", val: 50, color: "bg-purple-500" }
+                    ],
+                    specs: [
+                        { icon: "fa-microchip", label: "Procesador (CPU)", val: "AMD Ryzen 5 7600X (6 núcleos / 12 hilos)" },
+                        { icon: "fa-memory", label: "Memoria RAM", val: "32 GB DDR5 5200MHz (Ideal para Docker)" },
+                        { icon: "fa-hard-drive", label: "Almacenamiento", val: "1 TB SSD NVMe M.2 PCIe 4.0 rápido" },
+                        { icon: "fa-display", label: "Gráficos (GPU)", val: "AMD Radeon Graphics integrados" },
+                        { icon: "fa-power-off", label: "Fuente de Alimentación", val: "650W 80+ Bronze para estabilidad" }
+                    ],
+                    justification: `
+                        <p><strong>Presupuesto seleccionado: 1.000 € (Enfoque: Programación Eficiente y Contenedores)</strong></p>
+                        <p>Punto de partida ideal para desarrolladores que necesitan compilar código con agilidad y levantar contenedores básicos.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                            <li><strong>CPU (Ryzen 5 7600X):</strong> Gran rendimiento IPC por núcleo para compiladores modernos.</li>
+                            <li><strong>RAM (32 GB DDR5):</strong> Esencial para Docker, Node.js y editores pesados simultáneos.</li>
+                        </ul>
+                    `,
+                    comparison: `
+                        <p class="font-semibold text-white mb-1"><i class="fa-solid fa-arrow-up text-emerald-400 mr-1"></i> Si saltas al modelo de 2.000 €:</p>
+                        <p>Pasarás a un procesador de <strong>20 núcleos</strong>, <strong>64 GB de RAM</strong> y gráfica dedicada <strong>RTX 4060</strong> para virtualización pesada e IA local.</p>
+                    `
+                },
+                2000: {
+                    title: "PC de Desarrollo (2.000€)",
+                    tag: "Perfil Desarrollo - Pro Multitarea",
+                    price: "2.000 €",
+                    watts: "~380 W",
+                    psu: "750W Gold Modular",
+                    life: "+6 años de vida útil",
+                    perf: [
+                        { label: "Compilación y Código", val: 94, color: "bg-indigo-500" },
+                        { label: "Multitarea / Contenedores", val: 95, color: "bg-blue-500" },
+                        { label: "Velocidad de Lectura SSD", val: 95, color: "bg-emerald-500" },
+                        { label: "Entornos Gráficos / IA", val: 80, color: "bg-purple-500" }
+                    ],
+                    specs: [
+                        { icon: "fa-microchip", label: "Procesador (CPU)", val: "Intel Core i7-14700K (20 núcleos / 28 hilos)" },
+                        { icon: "fa-memory", label: "Memoria RAM", val: "64 GB DDR5 6000MHz (Virtualización pesada)" },
+                        { icon: "fa-hard-drive", label: "Almacenamiento", val: "2 TB SSD NVMe PCIe 4.0 Alta Lectura" },
+                        { icon: "fa-display", label: "Gráficos (GPU)", val: "NVIDIA GeForce RTX 4060 8GB" },
+                        { icon: "fa-power-off", label: "Fuente de Alimentación", val: "750W 80+ Gold Totalmente Modular" }
+                    ],
+                    justification: `
+                        <p><strong>Presupuesto seleccionado: 2.000 € (Enfoque: Full-Stack, Máquinas Virtuales e IA)</strong></p>
+                        <p>Diseñado para microservicios múltiples, bases de datos locales pesadas y machine learning.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-slate-300">
+                            <li><strong>CPU (Core i7 de 20 núcleos):</strong> Compilaciones gigantescas sin ralentizar el equipo.</li>
+                            <li><strong>64 GB RAM + RTX 4060:</strong> Soporte completo para Kubernetes, Docker avanzado y librerías CUDA.</li>
+                        </ul>
+                    `,
+                    comparison: `
+                        <p class="font-semibold text-white mb-1"><i class="fa-solid fa-arrow-up text-emerald-400 mr-1"></i> Si saltas al modelo Máximo (3.000€+):</p>
+                        <p>Obtendrás un procesador insignia (Ryzen 9 / i9), <strong>128 GB de RAM</strong> y gráfica <strong>RTX 4080</strong> para cargas extremas de Deep Learning.</p>
+                    `
+                },
+                3000: {
+                    title: "PC de Desarrollo (3.000€+)",
+                    tag: "Perfil Desarrollo - Máximo Sin Límites",
+                    price: "3.000 €+",
+                    watts: "~520 W",
+                    psu: "850W Platinum",
+                    life: "+7 años de vida útil",
+                    perf: [
+                        { label: "Compilación y Código", val: 100, color: "bg-indigo-500" },
+                        { label: "Multitarea / Contenedores", val: 100, color: "bg-blue-500" },
+                        { label: "Velocidad de Lectura SSD", val: 100, color: "bg-emerald-500" },
+                        { label: "Entornos Gráficos / IA", val: 98, color: "bg-purple-500" }
+                    ],
+                    specs: [
+                        { icon: "fa-microchip", label: "Procesador (CPU)", val: "AMD Ryzen 9 7950X o Intel i9-14900K" },
+                        { icon: "fa-memory", label: "Memoria RAM", val: "128 GB DDR5 6400MHz Extreme" },
+                        { icon: "fa-hard-drive", label: "Almacenamiento", val: "4 TB SSD NVMe PCIe 5.0 Ultra Rápido" },
+                        { icon: "fa-display", label: "Gráficos (GPU)", val: "NVIDIA GeForce RTX 4080 16GB" },
+                        { icon: "fa-power-off", label: "Fuente de Alimentación", val: "850W 80+ Platinum" }
+                    ],
+                    justification: `
+                        <p><strong>Presupuesto seleccionado: 3.000 €+ (Enfoque: Máxima Potencia e Inteligencia Artificial)</strong></p>
+                        <p>Estación de trabajo sin concesiones para arquitectos de software y científicos de datos.</p>
+                    `,
+                    comparison: `
+                        <p class="font-semibold text-white mb-1"><i class="fa-solid fa-crown text-amber-400 mr-1"></i> Estación Definitiva:</p>
+                        <p>Cima tecnológica actual del hardware profesional.</p>
+                    `
+                }
+            }
+        };
+
+        function setBudget(profile, amount) {
+            currentProfile = profile;
+            currentBudget = amount;
+            
+            if (profile === 'office') {
+                document.querySelectorAll('.budget-btn-office').forEach(btn => {
+                    btn.className = "budget-btn-office py-3 px-4 rounded-xl text-sm font-bold border border-slate-800 bg-slate-900/80 text-slate-300 hover:bg-slate-800 cursor-pointer transition-all duration-200";
+                });
+                document.getElementById(`btn-office-${amount}`).className = "budget-btn-office py-3 px-4 rounded-xl text-sm font-bold border border-blue-500 bg-blue-600 text-white shadow-lg shadow-blue-600/25 cursor-pointer transition-all duration-200";
+            } else {
+                document.querySelectorAll('.budget-btn-dev').forEach(btn => {
+                    btn.className = "budget-btn-dev py-3 px-2 rounded-xl text-xs font-bold border border-slate-800 bg-slate-900/80 text-slate-300 hover:bg-slate-800 cursor-pointer transition-all duration-200 text-center";
+                });
+                document.getElementById(`btn-dev-${amount}`).className = "budget-btn-dev py-3 px-2 rounded-xl text-xs font-bold border border-indigo-500 bg-indigo-600 text-white shadow-lg shadow-indigo-600/25 cursor-pointer transition-all duration-200 text-center";
+            }
+        }
+
+        function launchConfig(profile) {
+            showView('detail');
+            renderConfigData();
+        }
+
+        function showView(viewName) {
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-detail').classList.add('hidden');
+            document.getElementById('view-' + viewName).classList.remove('hidden');
+
+            const navActions = document.getElementById('nav-actions');
+            if (viewName === 'home') {
+                navActions.classList.add('hidden');
+            } else {
+                navActions.classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderConfigData() {
+            const data = configurations[currentProfile][currentBudget];
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-tag').innerText = data.tag;
+            document.getElementById('detail-price-tag').innerText = data.price;
+            document.getElementById('calc-watts').innerText = data.watts;
+            document.getElementById('calc-psu').innerText = data.psu;
+            document.getElementById('life-badge').innerHTML = `<i class="fa-solid fa-shield-halved mr-1"></i> ${data.life}`;
+            document.getElementById('upgrade-comparison-content').innerHTML = data.comparison;
+
+            // Renderizar barras de rendimiento
+            const perfContainer = document.getElementById('performance-bars');
+            perfContainer.innerHTML = '';
+            data.perf.forEach(p => {
+                perfContainer.innerHTML += `
+                    <div>
+                        <div class="flex justify-between text-xs text-slate-300 font-medium mb-1">
+                            <span>${p.label}</span>
+                            <span class="font-bold text-white">${p.val}/100</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                            <div class="progress-bar h-full ${p.color} rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Animar las barras
+            setTimeout(() => {
+                const bars = document.querySelectorAll('.progress-bar');
+                bars.forEach((bar, index) => {
+                    bar.style.width = data.perf[index].val + '%';
+                });
+            }, 100);
+
+            // Renderizar especificaciones
+            const specsList = document.getElementById('specs-list');
+            specsList.innerHTML = '';
+            data.specs.forEach(spec => {
+                specsList.innerHTML += `
+                    <li class="flex items-start gap-3.5 bg-[#070b14]/70 p-3.5 rounded-2xl border border-slate-800/80 shadow-sm">
+                        <div class="text-blue-400 text-base mt-0.5 w-5 text-center"><i class="fa-solid ${spec.icon}"></i></div>
+                        <div>
+                            <strong class="block text-[11px] text-slate-400 uppercase font-semibold">${spec.label}</strong>
+                            <span class="text-slate-200 text-xs font-medium">${spec.val}</span>
+                        </div>
+                    </li>
+                `;
+            });
+
+            document.getElementById('modal-content').innerHTML = data.justification;
+        }
+
+        function openJustificationModal() {
+            document.getElementById('justification-modal').classList.remove('hidden');
+        }
+
+        function closeJustificationModal() {
+            document.getElementById('justification-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
