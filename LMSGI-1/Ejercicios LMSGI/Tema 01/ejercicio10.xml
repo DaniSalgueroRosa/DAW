@@ -1,13 +1,13 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <agenda>
     <contacto id = "1">
-        <nombre>Javi<nombre>
-        <numero>689860512<numero>
+        <nombre>Javi</nombre>
+        <numero>689860512</numero>
         <direccion>Calle Tonto</direccion>
     </contacto>
     <contacto id = "2">
-        <nombre>Eric<nombre>
-        <numero>689540323<numero>
+        <nombre>Eric</nombre>
+        <numero>689540323</numero>
         <direccion>Calle Tonta</direccion>
     </contacto>
 </agenda>

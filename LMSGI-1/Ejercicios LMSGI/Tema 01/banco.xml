@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<banco>
+    <sucursal codigo= "1">
+        <cuenta codigo= "1.1">
+            <cliente>Javi</cliente>
+        </cuenta>
+    </sucursal>
+    <sucursal codigo= "2">
+        <cuenta codigo= "2.1">
+            <cliente>Eric</cliente>
+            <cliente>Ángel</cliente>
+        </cuenta>
+    </sucursal>
+</banco>
