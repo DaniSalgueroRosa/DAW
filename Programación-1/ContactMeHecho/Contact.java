@@ -13,8 +13,6 @@ public class Contact{
         this.surName2 = surName2;
     }
 
-    public Contact{
-        
-    }
+
     
 }
