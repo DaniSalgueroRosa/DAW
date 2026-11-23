@@ -1,18 +1,15 @@
 
 
 public class Habitacion{
-    private boolean cuadroRevisado;
-    private boolean cajonRevisado;
-    private boolean alfombraRevisada;
+    private boolean cuadroRevisado=false;
+    private boolean cajonRevisado=false;
+    private boolean alfombraRevisada=false;
 
     private int pistaCuadro;
     private int pistaCajon;
     private int pistaAlfombra;
 
-    public Habitacion(boolean cuadroRevisado , boolean cajonRevisado , boolean alfombraRevisada , int pistaCuadro , int pistaCajon , int pistaAlfombra){
-        this.cuadroRevisado = this.cuadroRevisado;
-        this.cajonRevisado = this.cajonRevisado;
-        this.alfombraRevisada = this.alfombraRevisada;
+    public Habitacion(int pistaCuadro , int pistaCajon , int pistaAlfombra){
         this.pistaCuadro = this.pistaCuadro;
         this.pistaCajon = this.pistaCajon;
         this.pistaAlfombra = this.pistaAlfombra;

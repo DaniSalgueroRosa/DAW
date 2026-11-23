@@ -3,10 +3,10 @@ public class CajaFuerte{
     private int intentosRestantes;
     private boolean estaAbierta;
 
-    public CajaFuerte(int codigoSecreto, int intentosRestantes , boolean estaAbierta) {
+    public CajaFuerte(int codigoSecreto, int intentosRestantes) {
         this.codigoSecreto = codigoSecreto;
         this.intentosRestantes = intentosRestantes;
-        this.estaAbierta = false;
+       
     }
 
     public void intentarAbrir(int combinacion) {
@@ -29,7 +29,9 @@ public class CajaFuerte{
     public boolean estaAbierta(){
         return estaAbierta;
     }
-
+    public int getCodigoSecreto(){
+        return codigoSecreto;
+    }
     public int getIntentosRestantes(){
         return intentosRestantes;}
 }
