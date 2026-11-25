@@ -19,12 +19,15 @@ public class Contacto {
         this.numero = numero;
     }
 
+    // imprimir tarjeta
     @Override 
     public String toString(){
         String tarjeta = this.nombre + this.apellido1 + this.apellido2 + this.email + this.numero;
         return tarjeta;
     }
 
+
+    // getters
     public String getNombre() {
         return nombre;
     }
@@ -44,8 +47,5 @@ public class Contacto {
     public String getEmail() {
         return email;
     }
-
-
-    
 
 }
